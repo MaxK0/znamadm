@@ -9,7 +9,8 @@ class DeputyController extends Controller
 {
     public function index()
     {
-        return Deputy::all();
+        $deputies = Deputy::all();
+        return view('pages.deputies.index', compact('deputies'));
     }
 
     public function store(Request $request)

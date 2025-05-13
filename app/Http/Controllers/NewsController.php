@@ -9,7 +9,12 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return News::all();
+        $news = News::with('user')
+            ->whereNotNull('published_at')
+            ->orderBy('published_at', 'desc')
+            ->paginate(10);
+
+        return view('pages.news.index', compact('news'));
     }
 
     public function store(Request $request)
@@ -26,7 +31,13 @@ class NewsController extends Controller
 
     public function show(News $news)
     {
-        return $news;
+        $news->load('user'); // Жадная загрузка автора
+        $relatedNews = News::where('id', '!=', $news->id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('news.show', compact('news', 'relatedNews'));
     }
 
     public function update(Request $request, News $news)

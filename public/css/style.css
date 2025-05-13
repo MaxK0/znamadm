@@ -1,0 +1,367 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --light-blue: #e3f2fd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: white;
+    line-height: 1.6;
+}
+
+#site {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.container {
+    width: 72%;
+    margin-inline: auto;
+}
+
+.header {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    min-width: 200px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.main {
+    padding: 2rem 0;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.news-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Дополнительные стили для других страниц */
+.section-title {
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.staff-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.staff-card {
+    background: var(--light-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.dropdown-content {
+    padding: 0.5rem 0;
+    border-radius: 4px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    gap: 0.75rem;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.dropdown-item:not(.last) {
+    border-bottom: 1px solid #eee;
+}
+
+.document-type-icon {
+    opacity: 0.7;
+}
+
+.document-count {
+    margin-left: auto;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.dropdown-empty {
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Стили для страницы новости */
+.news-article {
+    background: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.article-header {
+    padding: 3rem 0;
+    background: var(--light-blue);
+}
+
+.article-date {
+    color: #666;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.article-title {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.article-image {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Стили для документов */
+.documents-list {
+    margin-top: 2rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.document-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    padding-left: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.document-item:last-child {
+    border-bottom: none;
+}
+
+.document-icon {
+    font-size: 1.5rem;
+}
+
+.document-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.document-link:hover {
+    text-decoration: underline;
+}
+
+.document-meta {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+
+.obsolete {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Стили для депутатов */
+.deputies-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.deputy-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.photo-placeholder {
+    background: var(--light-blue);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon {
+    width: 100px;
+    height: 100px;
+    fill: var(--primary-color);
+    opacity: 0.7;
+}
+
+.deputy-info {
+    padding: 1.5rem;
+}
+
+.deputy-name {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.deputy-meta {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.meta-item {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9em;
+}
+
+.meta-label {
+    font-weight: 500;
+    color: #666;
+}
+
+/* Стили для списка новостей */
+.news-list {
+    display: grid;
+    gap: 3rem;
+}
+
+.news-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.news-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.news-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.news-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #666;
+}
+
+.news-date {
+    font-size: 0.9em;
+}
+
+.news-author {
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+.news-title {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.news-excerpt {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.no-deputies,
+.no-news {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-style: italic;
+}

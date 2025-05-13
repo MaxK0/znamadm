@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\DocumentType;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
     public function index()
     {
-        return Document::all();
+        $types = DocumentType::with('documents')->get();
+        return view('pages.documents.index', compact('types'));
+    }
+
+    public function type(DocumentType $type)
+    {
+        $documents = $type->documents()
+            ->where('is_active', true)
+            ->orderBy('published_at', 'desc')
+            ->paginate(10);
+
+        return view('pages.documents.type', compact('type', 'documents'));
     }
 
     public function store(Request $request)
