@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} - @yield('title')</title>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ @asset('/fontawesome/css/all.min.css') }}">
 </head>
 <body>
 <div id="site">
@@ -15,6 +16,7 @@
             </div>
             <nav class="nav">
                 <a href="/">Главная</a>
+                <a href="{{ route('history') }}">История</a>
                 <a href="{{ route('deputies') }}">Совет</a>
                 <div class="dropdown">
                     <a href="{{ route('documents') }}">Документы ▾</a>

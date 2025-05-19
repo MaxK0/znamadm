@@ -7,6 +7,8 @@ use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/history', [HomeController::class, 'history'])->name('history');
+
 Route::get('/deputies', [DeputyController::class, 'index'])->name('deputies');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');

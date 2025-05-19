@@ -11,4 +11,9 @@ class HomeController extends Controller
         $latestNews = News::latest()->take(3)->get();
         return view('pages.home', compact('latestNews'));
     }
+
+    public function history()
+    {
+        return view('pages.history');
+    }
 }

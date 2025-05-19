@@ -2,14 +2,30 @@
 
 @section('title', 'Главная')
 @section('content')
+    <section class="title-section">
+        <div class="container">
+            <img src="{{ asset('/img/house.jpg') }}" alt="Знаменский сельсовет">
+        </div>
+    </section>
     <section class="welcome-section">
         <div class="container">
             <h2 class="section-title">Добро пожаловать</h2>
-            <p>На сайте Вы сможете ознакомиться с данными по культуре, образованию, спорту и социальному развитию сельского поселения, узнать историю создания и самые свежие новости.</p>
-
-            <div class="signature">
-                <p>С уважением,<br>
-                    Глава сельского поселения</p>
+            <div class="welcome-block">
+                <div class="welcome-links">
+                    <a href="mailto:znamenka-2013@mail.ru" class="btn-main">znamenka-2013@mail.ru</a>
+                    <a href="tel:+7 (347-86) 2-24-99" class="btn-main">+7 (347-86) 2-24-99</a>
+                    <a class="welcome-vk" href="https://vk.com/club209287719">
+                        <i class="fa-brands fa-vk"></i>
+                    </a>
+{{--                    <a href="" class="btn-main">znamenka-2013@mail.ru</a>--}}
+                </div>
+                <div class="welcome-text">
+                    <p>На сайте Вы сможете ознакомиться с данными по культуре, образованию, спорту и социальному развитию сельского поселения, узнать историю создания и самые свежие новости.</p>
+                    <div class="signature">
+                        <p>С уважением,<br>
+                            Глава сельского поселения</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -33,6 +49,12 @@
                 @endforeach
             </div>
         </div>
+    </section>
 
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Карта села Знаменка</h2>
+            <img src="{{ asset('/img/karta.png') }}" alt="map" class="map-img">
+        </div>
     </section>
 @endsection
