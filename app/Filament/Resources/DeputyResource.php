@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\DeputyResource\Pages;
 use App\Models\Deputy;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -47,6 +48,10 @@ class DeputyResource extends Resource
                 TextInput::make('phone')
                     ->label('Телефон')
                     ->required(),
+
+                FileUpload::make('image')
+                    ->label('Изображение')
+                    ->image(),
 
                 Placeholder::make('created_at')
                     ->label('Создано')

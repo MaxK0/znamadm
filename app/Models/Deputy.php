@@ -11,6 +11,7 @@ class Deputy extends Model
         'birth_date',
         'position',
         'phone',
+        'image'
     ];
 
     protected function casts()

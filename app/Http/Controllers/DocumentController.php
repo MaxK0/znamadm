@@ -8,20 +8,33 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $types = DocumentType::with('documents')->get();
-        return view('pages.documents.index', compact('types'));
+        $search = $request->input('search');
+
+        $types = DocumentType::with(['documents' => function($query) use ($search) {
+            $query->where('is_active', true);
+            if ($search) {
+                $query->where('title', 'like', "%{$search}%");
+            }
+        }])->get();
+
+        return view('pages.documents.index', compact('types', 'search'));
     }
 
-    public function type(DocumentType $type)
+    public function type(Request $request, DocumentType $type)
     {
+        $search = $request->input('search');
+
         $documents = $type->documents()
             ->where('is_active', true)
+            ->when($search, function($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%");
+            })
             ->orderBy('published_at', 'desc')
             ->paginate(10);
 
-        return view('pages.documents.type', compact('type', 'documents'));
+        return view('pages.documents.type', compact('type', 'documents', 'search'));
     }
 
     public function store(Request $request)

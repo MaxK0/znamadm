@@ -4,7 +4,21 @@
 @section('content')
     <section class="news-section">
         <div class="container">
-            <h1 class="section-title">Последние новости</h1>
+            <h1 class="section-title">Новости</h1>
+
+            <form action="{{ route('news') }}" method="GET" class="news-search">
+                <div class="search-wrapper">
+                    <input type="text" name="search" placeholder="Поиск по новостям..."
+                           value="{{ request('search') }}" class="input">
+                    <button type="submit" class="search-button">Найти</button>
+                </div>
+            </form>
+
+            @if(request('search') && $news->isEmpty())
+                <div class="no-results">
+                    По вашему запросу "{{ request('search') }}" ничего не найдено.
+                </div>
+            @endif
 
             <div class="news-list">
                 @forelse($news as $item)
@@ -27,14 +41,13 @@
                                 @endif
                             </div>
                         </div>
-                        <h2 class="news-title">{{ $item->title }}</h2>
+                        <a href="{{ route('news.show', $item) }}" class="link-main">
+                            <h2 class="news-title">{{ $item->title }}</h2>
+
+                        </a>
                         <div class="news-excerpt">
                             {{ Str::limit($item->description, 200) }}
                         </div>
-{{--                        <a href="{{ route('news.show', $item) }}"--}}
-{{--                           class="news-read-more">--}}
-{{--                            Читать полностью--}}
-{{--                        </a>--}}
                     </article>
                 @empty
                     <div class="no-news">

@@ -14,9 +14,23 @@
 
             <h1 class="section-title">{{ $type->title }}</h1>
 
-            @if($type->description)
+            @if ($type->description)
                 <div class="type-description">
                     {!! nl2br(e($type->description)) !!}
+                </div>
+            @endif
+
+            <form action="{{ route('documents.type', $type) }}" method="GET" class="document-search">
+                <div class="search-wrapper">
+                    <input type="text" name="search" placeholder="Поиск по документам..."
+                           value="{{ request('search') }}" class="input">
+                    <button type="submit" class="search-button">Найти</button>
+                </div>
+            </form>
+
+            @if(request('search') && $documents->sum(fn($type) => $documents->count()) === 0)
+                <div class="no-results">
+                    По вашему запросу "{{ request('search') }}" ничего не найдено.
                 </div>
             @endif
 
@@ -29,18 +43,17 @@
                                 <time datetime="{{ $document->published_at->toIso8601String() }}">
                                     {{ $document->published_at->translatedFormat('j F Y') }}
                                 </time>
-                                @if(!$document->is_relevant)
+                                @if (!$document->is_relevant)
                                     <span class="document-status obsolete">Устаревший</span>
                                 @endif
                             </div>
                             <h3 class="document-title">
                                 <a href="{{ asset('storage/' . $document->file_path) }}"
-                                   download="{{ Str::slug($document->title) }}.pdf"
-                                   class="document-link">
+                                    download="{{ Str::slug($document->title) }}.pdf" class="document-link">
                                     {{ $document->title }}
                                 </a>
                             </h3>
-                            @if($document->description)
+                            @if ($document->description)
                                 <p class="document-description">
                                     {{ $document->description }}
                                 </p>

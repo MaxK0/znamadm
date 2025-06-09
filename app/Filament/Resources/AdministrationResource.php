@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AdministrationResource\Pages;
 use App\Models\Administration;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -47,6 +48,10 @@ class AdministrationResource extends Resource
                 TextInput::make('contact')
                     ->label('Контакт')
                     ->required(),
+
+                FileUpload::make('image')
+                    ->label('Изображение')
+                    ->image(),
 
                 Placeholder::make('created_at')
                     ->label('Создано')

@@ -20,10 +20,9 @@
                 <h1 class="article-title">{{ $news->title }}</h1>
 
                 @if($news->image_path)
-                    <figure class="article-image">
+                    <figure class="article-image img-responsive">
                         <img src="{{ asset('storage/' . $news->image_path) }}"
-                             alt="{{ $news->title }}"
-                             class="img-responsive">
+                             alt="{{ $news->title }}">
                     </figure>
                 @endif
             </div>
@@ -45,11 +44,10 @@
                                          alt="{{ $item->title }}">
                                 @endif
                                 <div class="news-content">
-                                    <h3>{{ $item->title }}</h3>
-                                    <a href="{{ route('news.show', $item) }}"
-                                       class="news-read-more">
-                                        Подробнее
+                                    <a class="link-main" href="{{ route('news.show', $item) }}">
+                                        <h3>{{ $item->title }}</h3>
                                     </a>
+                                    <p>{{ $item->published_at->format('d.m.Y') }}</p>
                                 </div>
                             </div>
                         @endforeach

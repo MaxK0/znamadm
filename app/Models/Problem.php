@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Administration extends Model
+class Problem extends Model
 {
     protected $fillable = [
-        'fio',
-        'position',
-        'intake',
+        'name',
+        'info',
         'contact',
-        'image'
     ];
 }
